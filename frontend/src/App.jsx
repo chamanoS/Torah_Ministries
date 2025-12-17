@@ -1,19 +1,20 @@
-import React from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Books from "./pages/Books";
+import Blogs from "./pages/Blogs";
+import Ministry from "./pages/Ministry";
+import Navbar from "./components/layout/Navbar";
 
-function App() {
-
-
+export default function App() {
   return (
-    <>
-      <div>
-       <h1 className="text-3xl font-bold text-blue-600">
-        Tailwind is working
-      </h1>
-      </div>
-     
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/ministry" element={<Ministry />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
