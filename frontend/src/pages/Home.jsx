@@ -52,7 +52,7 @@ export default function Home() {
     <div className="bg-[#FDFCFB] text-slate-900">
 
       {/* HERO */}
-      <section className="pt-28 pb-20 px-6 bg-gradient-to-b from-amber-50 to-transparent">
+      <section className="pt-48 pb-36 px-6 bg-gradient-to-b from-amber-50 to-transparent">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
