@@ -12,7 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const BOOK_TABLE = [
+const BOOKS = [
   { id: 1, title: "The Path of the Just", author: "Ramchal", file: "/downloads/path-of-the-just.pdf" },
   { id: 2, title: "Garden of Emuna", author: "Shalom Arush", file: "/downloads/garden-of-emuna.pdf" },
   { id: 3, title: "The Kuzari", author: "Yehuda HaLevi", file: "/downloads/kuzari.pdf" },
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LIBRARY + COMMUNITY */}
+      LIBRARY + COMMUNITY
       <section className="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-12 pb-24">
 
         {/* BOOK GRID */}
@@ -162,6 +162,63 @@ export default function Home() {
           </div>
         </aside>
       </section>
+
+{/* BOOK DOWNLOAD TABLE */}
+<section className="max-w-7xl mx-auto px-6 pb-32">
+  <h2 className="text-3xl font-bold mb-6 flex items-center gap-2">
+    <BookOpen className="text-accent" />
+    Books Ready for Download
+  </h2>
+
+  <div className="overflow-hidden rounded-2xl border bg-white shadow-sm">
+    <table className="w-full text-left">
+      <thead className="bg-slate-50 text-slate-600 text-sm uppercase tracking-wider">
+        <tr>
+          <th className="px-6 py-4">Book</th>
+          <th className="px-6 py-4">Author</th>
+          <th className="px-6 py-4 text-right">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {BOOKS.map((book, idx) => (
+          <tr
+            key={book.id}
+            className={`border-t hover:bg-amber-50/40 transition ${
+              idx % 2 === 0 ? "bg-white" : "bg-slate-50/40"
+            }`}
+          >
+            <td className="px-6 py-4 font-semibold">
+              <a
+                href={`/books/${book.id}`}
+                className="text-accent hover:underline"
+              >
+                {book.title}
+              </a>
+            </td>
+            <td className="px-6 py-4 text-slate-600">
+              {book.author}
+            </td>
+            <td className="px-6 py-4 text-right">
+              <a
+                href={book.file}
+                className="inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-accent"
+                download
+              >
+                <Download size={16} />
+                Download
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p className="text-sm text-slate-500 mt-4">
+    Click a book title to read reviews, reflections, and community insights.
+  </p>
+</section>
+
 
       {/* REVIEW MODAL */}
       <AnimatePresence>
